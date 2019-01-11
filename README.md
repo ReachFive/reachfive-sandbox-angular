@@ -1,27 +1,49 @@
-# ReachfiveSandboxAngular
+# ReachFive Angular Sandbox
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.0.
+ReachFive integration example with Angular.
 
-## Development server
+This sandbox use the [NPM SDK](`https://github.com/ReachFive/identity-web-core-sdk`), 
+and gives an example of SSO implementation.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Config
 
-## Code scaffolding
+Copy `./src/app/identity/identity-config.ts.example` to `./src/app/identity/identity-config.ts`, 
+and replace `{DOMAIN}` and `{CLIENT_ID}` placeholders by your ReachFive's account domain and client id.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Run
 
-## Build
+Run `ng serve` for a dev server. 
+Navigate to `http://localhost:4200/`. 
+The app will automatically reload if you change any of the source files.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## File structure
 
-## Running unit tests
+ * `./src/app/login` 
+   
+Page component displaying the login page
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+ * `./src/app/signup`
+ 
+Page component displaying the signup page
 
-## Running end-to-end tests
+ * `./src/app/user`
+ 
+Page component displaying a profile edit form (only accessible if the user is logged in).
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+ * `./src/app/callback`
 
-## Further help
+Page component used to handle authentication redirect.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+ * `./src/app/identity/identity.service.ts`
+ 
+ReachFive's Identity SDK wrapper which expose all user and authentication related commands.
+
+ * `./src/app/identity/auth-guard.service.ts`
+ 
+Service guard ensuring that the current user is logged in. 
+Must be added on all authenticated routes.
+
+ * `./src/app/identity/sso-guard.service.ts`
+ 
+Service guard ensuring that the current user has local or SSO active session. 
+Must be added on login and signup routes.

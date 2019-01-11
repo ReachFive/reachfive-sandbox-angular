@@ -1,0 +1,46 @@
+<h2>Login</h2>
+
+<form (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+  <p>
+    <mat-error *ngIf="error">
+      {{error}}
+    </mat-error>
+  </p>
+  <mat-form-field>
+    <input type="email"
+           matInput
+           name="email"
+           required
+           placeholder="Email"
+           [(ngModel)]="data.email"
+           #email="ngModel">
+    <mat-error *ngIf="email.invalid && (email.dirty || email.touched)">
+      Required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input type="password"
+           matInput
+           name="password"
+           required
+           placeholder="Password"
+           [(ngModel)]="data.password"
+           #password="ngModel">
+    <mat-error *ngIf="password.invalid && (password.dirty || password.touched)">
+      Required
+    </mat-error>
+  </mat-form-field>
+
+  <p>
+    <button mat-raised-button color="primary">
+      Login
+    </button>
+  </p>
+
+  <p>
+    <a mat-button routerLink="signup">
+      Do not have an account?
+    </a>
+  </p>
+</form>

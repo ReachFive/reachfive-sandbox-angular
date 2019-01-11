@@ -1,0 +1,44 @@
+<div *ngIf="profile">
+  <h3>My Account</h3>
+
+  <h4>Edit your profile</h4>
+
+  <form (ngSubmit)="f.form.valid && updateProfile()" #f="ngForm" novalidate>
+    <p>
+      <mat-error *ngIf="error">
+        {{error}}
+      </mat-error>
+    </p>
+
+    <mat-form-field>
+      <input matInput
+             name="givenName"
+             required
+             placeholder="First name"
+             [(ngModel)]="profile.givenName"
+             #givenName="ngModel">
+      <mat-error *ngIf="givenName.invalid && (givenName.dirty || givenName.touched)">
+        Required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput
+             name="familyName"
+             required
+             placeholder="Last name"
+             [(ngModel)]="profile.familyName"
+             #familyName="ngModel">
+      <mat-error *ngIf="familyName.invalid && (familyName.dirty || familyName.touched)">
+        Required
+      </mat-error>
+    </mat-form-field>
+
+    <p>
+      <button mat-raised-button color="primary">
+        Send
+      </button>
+    </p>
+  </form>
+
+</div>

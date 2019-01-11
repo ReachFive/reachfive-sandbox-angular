@@ -1,0 +1,10 @@
+interface IdentityConfig {
+  clientId: string;
+  domain: string;
+}
+
+export const IDENTITY_CONFIG: IdentityConfig = {
+  clientID: '{CLIENT_ID}',
+  domain: '{DOMAIN}',
+  redirectUri: 'http://localhost:4200/callback'
+};
